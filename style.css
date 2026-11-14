@@ -1,0 +1,116 @@
+:root{
+  --bg:#0b0708;
+  --panel:#170d10;
+  --panel2:#22121a;
+  --garis:#3a1a24;
+  --merah:#ff2a45;
+  --merah-gelap:#b3122a;
+  --teks:#f6eef0;
+  --redup:#a99096;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--teks);
+  font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;
+  line-height:1.5;min-height:100vh;display:flex;flex-direction:column;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0}
+:focus-visible{outline:2px solid var(--merah);outline-offset:2px}
+
+/* HEADER */
+.header{
+  position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:20px;
+  padding:12px 20px;background:rgba(11,7,8,.94);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--garis);
+}
+.logo{font-weight:900;font-size:1.25rem;letter-spacing:.5px;color:var(--merah);
+  text-shadow:0 0 14px rgba(255,42,69,.55);white-space:nowrap}
+.nav{display:flex;gap:6px}
+.nav a{padding:6px 12px;border-radius:8px;color:var(--redup);font-weight:700}
+.nav a:hover,.nav a.aktif{color:var(--teks);background:var(--panel2)}
+.cari{margin-left:auto;flex:0 1 320px}
+.cari input{
+  width:100%;padding:9px 14px;border-radius:10px;border:1px solid var(--garis);
+  background:var(--panel);color:var(--teks);font:inherit;
+}
+.cari input::placeholder{color:var(--redup)}
+.cari input:focus{border-color:var(--merah);outline:none;box-shadow:0 0 0 3px rgba(255,42,69,.2)}
+
+/* LAYOUT */
+main{flex:1;width:100%;max-width:1200px;margin:0 auto;padding:20px}
+.footer{padding:20px;text-align:center;color:var(--redup);border-top:1px solid var(--garis);font-size:.9rem}
+
+/* BANNER */
+.banner{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:3/1;
+  border:1px solid var(--garis);background:var(--panel)}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+  padding:0 7%;opacity:0;transition:opacity .6s;background-size:cover;background-position:center}
+.slide.aktif{opacity:1}
+.slide.polos{background:linear-gradient(120deg,#2a0912 0%,#0b0708 55%,#3a0c17 100%)}
+.slide::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(11,7,8,.85),rgba(11,7,8,.1));z-index:0}
+.slide>*{position:relative;z-index:1}
+.slide h2{font-size:clamp(1.2rem,3.6vw,2.6rem);font-weight:900;max-width:16ch;
+  text-shadow:0 0 22px rgba(255,42,69,.5)}
+.slide p{color:#e6d3d7;max-width:38ch;margin-top:6px;font-size:clamp(.8rem,1.5vw,1.05rem)}
+.titik{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:center;gap:7px;z-index:2}
+.titik button{width:9px;height:9px;border-radius:50%;background:#ffffff55;padding:0}
+.titik button.aktif{background:var(--merah);width:24px;border-radius:6px}
+
+/* SECTION */
+.judul-bagian{display:flex;align-items:center;justify-content:space-between;margin:28px 0 14px}
+.judul-bagian h2{font-size:1.3rem;border-left:4px solid var(--merah);padding-left:10px}
+.lihat{color:var(--merah);font-weight:700;padding:6px 12px;border:1px solid var(--merah);border-radius:8px}
+.lihat:hover{background:var(--merah);color:#fff}
+
+/* KARTU GAME */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.kartu{background:var(--panel);border:1px solid var(--garis);border-radius:12px;overflow:hidden;
+  display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.kartu:hover{border-color:var(--merah);transform:translateY(-3px)}
+.cover{aspect-ratio:16/10;background-size:cover;background-position:center;
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.4rem;font-weight:900;color:#ffffff44;
+  background-color:var(--panel2);
+  background-image:linear-gradient(135deg,#3a0c17,#150a0d)}
+.kartu .isi{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
+.kartu h3{font-size:1rem}
+.meta{color:var(--redup);font-size:.85rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--merah);color:#fff;font-weight:800;padding:10px 16px;border-radius:10px;
+  transition:background .15s}
+.btn:hover{background:var(--merah-gelap)}
+.kartu .btn{margin-top:auto}
+.kosong{padding:50px 10px;text-align:center;color:var(--redup)}
+
+/* DETAIL */
+.kembali{display:inline-block;margin-bottom:14px;color:var(--redup);font-weight:700}
+.kembali:hover{color:var(--teks)}
+.detail{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;
+  background:var(--panel);border:1px solid var(--garis);border-radius:14px;padding:20px}
+.detail .cover{border-radius:10px;font-size:4rem}
+.detail h1{font-size:1.7rem;margin-bottom:8px}
+.info{margin:16px 0;border:1px solid var(--garis);border-radius:10px;overflow:hidden}
+.info div{display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--garis)}
+.info div:last-child{border-bottom:0}
+.info span:first-child{color:var(--redup)}
+.info span:last-child{font-weight:800}
+.deskripsi{color:#dcc9ce}
+.btn-dl{width:100%;margin-top:18px;padding:14px;font-size:1.05rem}
+.btn-dl[disabled]{opacity:.7;cursor:progress}
+.progres{display:none;margin-top:12px}
+.progres.tampil{display:block}
+.bar{height:10px;border-radius:6px;background:var(--panel2);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--merah);transition:width .15s}
+.status{margin-top:6px;font-size:.88rem;color:var(--redup)}
+
+@media (max-width:760px){
+  .header{flex-wrap:wrap;gap:10px}
+  .cari{order:3;flex:1 1 100%;margin-left:0}
+  .banner{aspect-ratio:16/9}
+  .detail{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,1fr);gap:10px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
